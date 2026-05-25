@@ -1,0 +1,31 @@
+# NIST SP 800-207 Zero Trust Architecture Controls
+
+zero_trust_principles:
+  verify_explicitly:
+      - control: PE.1.1
+            name: "Verify Identity with Strong Authentication"
+                  checks:
+                          - "MFA is enforced for all users"
+                                  - "No password-only authentication allowed"
+
+                                      least_privilege:
+                                          - control: PE.1.2
+                                                name: "Apply Least Privilege Access"
+                                                      checks:
+                                                              - "No wildcard (*) actions allowed"
+                                                                      - "Resources restricted to specific ARNs"
+                                                                              - "Regular access reviews implemented"
+
+                                                                                  assume_breach:
+                                                                                      - control: PE.2.1
+                                                                                            name: "Assume Breach"
+                                                                                                  checks:
+                                                                                                          - "All access logged and monitored"
+                                                                                                                  - "Anomalies detected automatically"
+                                                                                                                          - "Incident response time < 1 hour"
+                                                                                                                          
+                                                                                                                          compliance_mappings:
+                                                                                                                            "CIS 1.1": "Avoid root account usage"
+                                                                                                                              "CIS 1.2": "Ensure MFA is enabled"
+                                                                                                                                "CIS 1.20": "Do not allow public access to S3"
+                                                                                                                                  "PCI-DSS 2.1": "Change default passwords"
